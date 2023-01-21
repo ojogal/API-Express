@@ -8,9 +8,9 @@ export default class Application {
     this.middlewares = []
   };
 
-  use(middleware) {
-    this.middlewares.push(middleware);
-  };
+  use(middleware) { this.middlewares.push(middleware) };
+
+  listen(port, callback) { this.server.listen(port, callback) };
 
   _createServer() {
     return http._createServer((req, res) => {
