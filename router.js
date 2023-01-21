@@ -18,7 +18,6 @@ export default class Router {
     if (endpoint[method]) { throw Error(`${method} method with ${path} address alreay exitsts`) };
 
     endpoint[method] = handler;
-    emitter.on(`[${path}]:[${method}]`, (req, res) => { handler(req, res) })
   };
 
   get(path, handler) { this.request('GET', path, handler) };
