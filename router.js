@@ -1,6 +1,6 @@
-import EventEmitter from 'node:events';
+// import EventEmitter from 'node:events';
 
-const emitter = new EventEmitter();
+// const emitter = new EventEmitter();
 
 export default class Router {
   constructor() {
