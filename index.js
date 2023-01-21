@@ -10,14 +10,14 @@ const app = new Application();
 
 app.use(jsonParser);
 app.use(urlParser(url));
-app.addRouter(userRouter);
+app.addRouter();
 
 const server = async () => {
   try {
-      app.listen(PORT, () => console.log(`Server started on PORT ${PORT}`))
+    app.listen(PORT, () => console.log(`Server started on PORT ${PORT}`))
   } catch (e) {
-      console.log(e)
+    console.log(e)
   }
-}
+};
 
 server()
