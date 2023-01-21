@@ -41,4 +41,6 @@ export default class Application {
         })
     })
   };
+
+  _getRouteMask(path, method) { return `[${path}]:[${method}]` }
 }
