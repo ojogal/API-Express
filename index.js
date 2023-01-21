@@ -1,20 +1,23 @@
 import * as http from 'node:http';
-import Router from './router.js'
+import Router from './router.js';
+import jsonParser from './parse_json.js';
+import urlParser from './parse_url.js';
+import Application from './applicaion.js'
 
 const PORT = process.env.PORT || 4001;
+const url = `http://localhost:${PORT}`;
+const app = new Application();
 
-const server = http.createServer((req, res) => {
+app.use(jsonParser);
+app.use(urlParser(url));
+app.addRouter(userRouter);
+
+const server = async () => {
   try {
-    res.writeHead(200, { 'Content-type': 'application/json' });
-    emitter.emit(`[${req.url}]:[${req.method}]`, req, res)
+      app.listen(PORT, () => console.log(`Server started on PORT ${PORT}`))
   } catch (e) {
-    res.end('Server does not work')
+      console.log(e)
   }
-});
+}
 
-server.listen(PORT, () => { console.log(`Server started on PORT ${PORT}`) })
-
-
-const router = new Router();
-
-router.get('/users', (req, res) => { res.end('request to users') });
+server()
