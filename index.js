@@ -15,7 +15,6 @@ const server = http.createServer((req, res) => {
 server.listen(PORT, () => { console.log(`Server started on PORT ${PORT}`) })
 
 
-
 const router = new Router();
 
 router.get('/users', (req, res) => { res.end('request to users') });
